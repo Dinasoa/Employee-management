@@ -42,7 +42,7 @@ public class Employee implements Serializable {
     private LocalDate entranceDate;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate departureDate;
-
     private List<Position> positions;
     private List<Phone> phones;
+    private int grossSalary;
 }

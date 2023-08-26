@@ -71,4 +71,5 @@ public class Employee implements Serializable {
     @OneToMany
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private List<Phone> phones;
+    private int grossSalary;
 }

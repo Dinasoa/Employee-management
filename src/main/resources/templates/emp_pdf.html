@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PDF</title>
+</head>
+<body>
+
+<div>
+    <img th:src="${employee.stringImage}" alt="no image"/>
+</div>
+
+<div>
+    <label>Numero matricule</label>
+    <p></p>
+    <label>Noms</label>
+    <p th:text="${employee.lastName}"></p>
+    <label>Prenom</label>
+    <p th:text="${employee.firstName}"></p>
+    <label>Age</label>
+    <div>
+        <label for="entranceDate">Date d'embauche</label>
+        <p id="entranceDate" th:text="*{employee.entranceDate}" type="date"></p>
+    </div>
+    <div>
+        <label for="departureDate">Date de depart</label>
+        <p id="departureDate" th:text="*{employee.departureDate}" type="date"></p>
+    </div>
+    <label>Numero CNAPS</label>
+    <p th:text="${employee.cnaps}"></p>
+</div>
+
+<div>
+    <p>Information sur le salaire</p>
+    <label>Salaire brute actuel: </label>
+    <p th:text="${employee.grossSalary}"></p>
+</div>
+
+<footer>
+    <label>Logo entreprise</label>
+    <label>Nom de l'entreprise</label>
+    <p th:text="${companyConf.name}"></p>
+    <label>NIF</label>
+    <p th:text="${companyConf.taxIdentity.nif}"></p>
+    <label>STAT</label>
+    <p th:text="${companyConf.taxIdentity.stat}"></p>
+    <label>Adresse</label>
+    <p th:text="${companyConf.address}"></p>
+    <label>Numero</label>
+    <ul th:each="phone : ${companyConf.phones}">
+        <li th:text="${phone.value}"></li>
+    </ul>
+    <label>Email</label>
+    <p th:text="${companyConf.email}"></p>
+</footer>
+</body>
+</html>

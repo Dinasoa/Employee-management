@@ -44,6 +44,7 @@ public class EmployeeMapper {
                     .cin(employee.getCin())
                     .cnaps(employee.getCnaps())
                     .registrationNumber(employee.getRegistrationNumber())
+                    .grossSalary(employee.getGrossSalary())
                     .childrenNumber(employee.getChildrenNumber())
                     // enums
                     .csp(employee.getCsp())
@@ -95,6 +96,7 @@ public class EmployeeMapper {
                 // lists
                 .phones(employee.getPhones().stream().map(phoneMapper::toView).toList())
                 .positions(employee.getPositions())
+                .grossSalary(employee.getGrossSalary())
                 .build();
     }
 }

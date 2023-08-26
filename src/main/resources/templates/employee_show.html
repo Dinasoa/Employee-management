@@ -14,6 +14,12 @@
         <img th:src="${employee.stringImage}" alt="no image">
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+        <label for="salary" class="form-label text-black-50">Salary</label>
+        <div id="salary" th:each="position : ${employee.grossSalary}">
+            <p th:text="${employee.grossSalary}" class="form-control show-fields"></p>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
         <label for="lastName" class="form-label text-black-50">Last name</label>
         <p id="lastName" th:text="*{employee.lastName}" type="text" class="form-control show-fields"></p>
     </div>
@@ -84,6 +90,11 @@
             <p th:text="${position.name}" class="form-control show-fields"></p>
         </div>
     </div>
+
+    <a th:href="'/server/employee/pdf/download/' + *{employee.id}">
+        <button class="btn btn-primary">Download to pdf</button>
+    </a>
+
 </div>
 
 <footer th:replace="~{components/navbar.html :: footer}"></footer>

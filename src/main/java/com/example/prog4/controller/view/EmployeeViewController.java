@@ -5,6 +5,8 @@ import com.example.prog4.controller.mapper.EmployeeMapper;
 import com.example.prog4.model.Employee;
 import com.example.prog4.model.EmployeeFilter;
 import com.example.prog4.service.EmployeeService;
+import com.lowagie.text.DocumentException;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/employee")
