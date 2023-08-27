@@ -32,11 +32,11 @@ import java.util.List;
 public class EmployeeService {
     private EmployeeRepository repository;
     private EmployeeManagerDao employeeManagerDao;
-    private EmployeeMapper employeeMapper;
-    public String parseThymeleafTemplate(Employee employee, Model model) {
+
+    public String parseThymeleafTemplate(com.example.prog4.model.Employee employee) {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
 
-        com.example.prog4.model.Employee view = employeeMapper.toView(employee);
+        com.example.prog4.model.Employee view = employee;
 
         templateResolver.setSuffix(".html");
         templateResolver.setPrefix("/templates/");

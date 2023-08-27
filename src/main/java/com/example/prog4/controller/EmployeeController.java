@@ -67,8 +67,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/pdf/download/{eId}")
-    public String downloadPdf(@PathVariable String eId, Model model, HttpServletResponse response) throws IOException, DocumentException {
-        String html = employeeService.parseThymeleafTemplate(employeeService.getOne(eId), model);
+    public String downloadPdf(@PathVariable String eId, HttpServletResponse response) throws IOException, DocumentException {
+        String html = employeeService.parseThymeleafTemplate(employeeMapper.toView(employeeService.getOne(eId)));
 
         employeeService.generateAndDownloadPdf(html, response);
         return "redirect:/employee/list";
