@@ -13,6 +13,7 @@
 <div class="container py-5">
     <form class="row g-3" th:object="${employee}" action="/server/employee/createOrUpdate" method="POST"
           enctype="multipart/form-data">
+        <input required id="age" name="age" th:field="*{age}" type="hidden"/>
         <div class="col-lg-4 col-md-6">
             <label for="lastName" class="form-label">Last name</label>
             <input required id="lastName" name="lastName" th:field="*{lastName}" type="text" class="form-control">
@@ -27,7 +28,7 @@
         </div>
         <div class="col-lg-4 col-md-6">
             <label for="salary" class="form-label">Salary</label>
-            <input required id="salary" name="firstName" th:field="*{grossSalary}" type="text" class="form-control">
+            <input required id="salary" name="grossSalary" th:field="*{grossSalary}" type="text" class="form-control">
         </div>
         <div class="col-lg-4 col-md-6">
             <label for="image" class="form-label">Address</label>

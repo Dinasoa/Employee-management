@@ -97,6 +97,7 @@ public class EmployeeMapper {
                 .phones(employee.getPhones().stream().map(phoneMapper::toView).toList())
                 .positions(employee.getPositions())
                 .grossSalary(employee.getGrossSalary())
+                .age(10)
                 .build();
     }
 }
