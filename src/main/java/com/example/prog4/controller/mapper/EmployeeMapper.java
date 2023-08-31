@@ -1,5 +1,6 @@
 package com.example.prog4.controller.mapper;
 
+import com.example.prog4.controller.birthday.Birthday;
 import com.example.prog4.model.Employee;
 import com.example.prog4.model.exception.BadRequestException;
 import com.example.prog4.repository.PositionRepository;
@@ -79,6 +80,51 @@ public class EmployeeMapper {
 //        LocalDate currentDate = LocalDate.of(2023, 5, 7);
         LocalDate birthDate = employee.getBirthDate();
         int age = Period.between(birthDate, currentDate).getYears();
+
+        return Employee.builder()
+                .id(employee.getId())
+                .firstName(employee.getFirstName())
+                .lastName(employee.getLastName())
+                .address(employee.getAddress())
+                .cin(employee.getCin())
+                .cnaps(employee.getCnaps())
+                .registrationNumber(employee.getRegistrationNumber())
+                .childrenNumber(employee.getChildrenNumber())
+                // enums
+                .csp(employee.getCsp())
+                .sex(employee.getSex())
+                .stringImage(employee.getImage())
+                // emails
+                .professionalEmail(employee.getProfessionalEmail())
+                .personalEmail(employee.getPersonalEmail())
+                // dates
+                .birthDate(employee.getBirthDate())
+                .departureDate(employee.getDepartureDate())
+                .entranceDate(employee.getEntranceDate())
+                // lists
+                .phones(employee.getPhones().stream().map(phoneMapper::toView).toList())
+                .positions(employee.getPositions())
+                .grossSalary(employee.getGrossSalary())
+                .age(age)
+                .build();
+    }
+
+    public Employee toViewPdf(com.example.prog4.repository.entity.Employee employee, String birthday) {
+
+        int age = 0;
+        if (birthday.equals(String.valueOf(Birthday.BIRTHDAY))){
+            LocalDate currentDate = LocalDate.now();
+//        LocalDate currentDate = LocalDate.of(2023, 5, 7);
+            LocalDate birthDate = employee.getBirthDate();
+            age = Period.between(birthDate, currentDate).getYears();
+        }
+
+        if(birthday.equals(String.valueOf(Birthday.YEAR_ONLY))){
+            LocalDate currentDate = LocalDate.now();
+            LocalDate birthDate = employee.getBirthDate();
+            age = currentDate.getYear() - birthDate.getYear();
+        }
+
 
         return Employee.builder()
                 .id(employee.getId())

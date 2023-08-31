@@ -94,7 +94,8 @@
         <label for="age" class="form-label text-black-50">Age</label>
         <p th:text="${employee.age}" id="age" class="form-control show-fields"></p>
     </div>
-    <a th:href="'/server/employee/pdf/download/' + *{employee.id}">
+
+    <a th:href="'/server/employee/pdf/download/' + *{employee.id} + '/' + 'YEAR_ONLY'">
         <button class="btn btn-primary">Download to pdf</button>
     </a>
 

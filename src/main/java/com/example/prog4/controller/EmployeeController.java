@@ -1,5 +1,6 @@
 package com.example.prog4.controller;
 
+import com.example.prog4.controller.birthday.Birthday;
 import com.example.prog4.controller.mapper.EmployeeMapper;
 import com.example.prog4.controller.validator.EmployeeValidator;
 import com.example.prog4.model.Employee;
@@ -66,9 +67,9 @@ public class EmployeeController {
         return "redirect:/employee/list";
     }
 
-    @GetMapping("/pdf/download/{eId}")
-    public String downloadPdf(@PathVariable String eId, HttpServletResponse response) throws IOException, DocumentException {
-        String html = employeeService.parseThymeleafTemplate(employeeMapper.toView(employeeService.getOne(eId)));
+    @GetMapping("/pdf/download/{eId}/{birthday}")
+    public String downloadPdf(@PathVariable String eId, @PathVariable String birthday, HttpServletResponse response) throws IOException, DocumentException {
+        String html = employeeService.parseThymeleafTemplate(employeeMapper.toViewPdf(employeeService.getOne(eId), birthday));
 
         employeeService.generateAndDownloadPdf(html, response);
         return "redirect:/employee/list";
